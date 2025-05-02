@@ -12,10 +12,10 @@
 
 .section-title {
   font-family: NotoSerif;
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
   color: #333;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: clamp(20px, 3vw, 30px);
   position: relative;
   padding-bottom: 15px;
 }
@@ -26,13 +26,13 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 100px;
+  width: clamp(80px, 20vw, 100px);
   height: 4px;
   background: #00c3a5;
   border-radius: 2px;
 }
 
-/* Contenedor principal del carrusel*/
+/* Contenedor principal del carrusel */
 .full-width-carousel-container {
   position: relative;
   width: 100vw;
@@ -41,12 +41,13 @@
   margin-left: -50vw;
   margin-right: -50vw;
   overflow: hidden;
-  padding: 40px 0;
+  padding: 0;
 }
 
 .carousel-wrapper {
   width: 100%;
   overflow: hidden;
+  position: relative;
 }
 
 .full-width-carousel {
@@ -54,15 +55,15 @@
   transition: transform 0.5s ease-in-out;
 }
 
-/*Cards*/
+/* Cards */
 .full-width-card {
   min-width: 100vw;
-  height: 600px;
+  height: clamp(350px, 60vh, 600px);
   position: relative;
   overflow: hidden;
 }
 
-/*Imagen*/
+/* Imagen */
 .card-image-container {
   position: absolute;
   width: 100%;
@@ -74,6 +75,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+}
+
+.full-width-card:hover .card-image {
   transform: scale(1.05);
 }
 
@@ -97,10 +103,10 @@
 /* Contenido de texto */
 .card-content {
   position: absolute;
-  margin-top: 30px;
-  left: 100px;
-  right: 100px;
-  padding: 40px;
+  margin-top: clamp(20px, 3vw, 30px);
+  left: clamp(30px, 8vw, 100px);
+  right: clamp(30px, 8vw, 100px);
+  padding: clamp(20px, 3vw, 40px);
   color: white;
   z-index: 2;
   max-width: 700px;
@@ -108,11 +114,11 @@
 }
 
 .card-title {
-  font-size: 2.5rem;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
   margin-bottom: 15px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
   font-weight: 700;
-  max-width: 80%;
+  max-width: 90%;
   position: relative;
   display: inline-block;
 }
@@ -128,7 +134,7 @@
 }
 
 .card-subtitle {
-  font-size: 1.5rem;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
   margin-bottom: 15px;
   font-family: "Nvidia", sans-serif;
   font-weight: 600;
@@ -137,13 +143,13 @@
 }
 
 .card-description {
-  font-size: 1.1rem;
-  max-width: 700px;
-  margin-bottom: 25px;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  max-width: 90%;
+  margin-bottom: clamp(15px, 2vw, 25px);
   font-family: "Nvidia", sans-serif;
   line-height: 1.6;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-  padding: 15px;
+  padding: clamp(10px, 2vw, 15px);
   border-radius: 8px;
 }
 
@@ -151,16 +157,21 @@
 .card-link {
   display: inline-block;
   color: white;
-  font-size: 1rem;
-  padding: 12px 30px;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  padding: clamp(10px, 2vw, 12px) clamp(20px, 3vw, 30px);
   text-decoration: none;
   font-family: "Nvidia", sans-serif;
   font-weight: 600;
   margin-top: 10px;
+  background-color: rgba(0, 195, 165, 0.7);
+  border-radius: 30px;
+  transition: all 0.3s ease;
 }
 
 .card-link:hover {
-  background-color: #53c4b3e1;
+  background-color: #00c3a5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Controles de navegación */
@@ -171,146 +182,64 @@
   background: rgba(255, 255, 255, 0.3);
   border: none;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: clamp(40px, 6vw, 60px);
+  height: clamp(40px, 6vw, 60px);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.carousel-button:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: translateY(-50%) scale(1.1);
 }
 
 .carousel-button svg {
   color: white;
-  font-size: 1.5rem;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
 }
 
 .carousel-button.prev {
-  left: 30px;
+  left: clamp(15px, 3vw, 30px);
 }
 
 .carousel-button.next {
-  right: 30px;
+  right: clamp(15px, 3vw, 30px);
 }
 
 /* Indicadores */
 .carousel-indicators {
   position: absolute;
-  bottom: 40px;
+  bottom: clamp(20px, 4vw, 40px);
   left: 0;
   right: 0;
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: clamp(8px, 1.5vw, 12px);
   z-index: 10;
 }
 
 .indicator {
-  width: 14px;
-  height: 14px;
+  width: clamp(10px, 2vw, 14px);
+  height: clamp(10px, 2vw, 14px);
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.5);
   border: 2px solid transparent;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .indicator.active {
   background: #00c3a5;
   border-color: white;
-}
-
-/* Responsive */
-@media (max-width: 1200px) {
-  .card-content {
-    left: 80px;
-    right: 80px;
-  }
-}
-
-@media (max-width: 992px) {
-  .card-content {
-    left: 60px;
-    right: 60px;
-  }
+  transform: scale(1.2);
 }
 
 @media (max-width: 768px) {
-  .section-title {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-
-  .full-width-card {
-    height: 400px;
-  }
-
-  .card-content {
-    padding: 25px;
-    padding-bottom: 40px;
-    left: 50px;
-    right: 50px;
-  }
-
-  .card-title {
-    font-size: 1.8rem;
-    max-width: 90%;
-  }
-
-  .card-subtitle {
-    font-size: 1.3rem;
-  }
-
-  .card-description {
-    font-size: 1rem;
-    padding: 10px;
-    max-width: 90%;
-  }
-
-  .carousel-button {
-    width: 50px;
-    height: 50px;
-  }
-
-  .carousel-button.prev {
-    left: 15px;
-  }
-
-  .carousel-button.next {
-    right: 15px;
-  }
-
-  .indicator {
-    width: 12px;
-    height: 12px;
-  }
-}
-
-@media (max-width: 576px) {
-  .section-title {
-    font-size: 1.7rem;
-    padding-bottom: 10px;
-  }
-
-  .section-title::after {
-    width: 80px;
-    height: 3px;
-  }
-
-  .full-width-card {
-    height: 350px;
-  }
-
-  .card-content {
-    left: 30px;
-    right: 30px;
-    padding: 20px;
-  }
-
-  .card-title {
-    font-size: 1.5rem;
-  }
-
-  .card-link {
-    padding: 10px 20px;
+  .full-width-carousel-container {
+    display: none; /
   }
 }

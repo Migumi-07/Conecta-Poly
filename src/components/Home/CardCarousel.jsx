@@ -6,24 +6,19 @@ import cardImage3 from "../../images/card3.jpg";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 function CardCarousel() {
+  const [isMobile, setIsMobile] = useState(false);
   const cards = [
     {
       id: 1,
-
       image: cardImage1,
-     
     },
     {
       id: 2,
-    
       image: cardImage2,
-     
     },
     {
       id: 3,
-    
       image: cardImage3,
-   
     },
   ];
 
@@ -31,6 +26,20 @@ function CardCarousel() {
   const [autoPlay, setAutoPlay] = useState(true);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
+
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkIfMobile();
+
+    window.addEventListener("resize", checkIfMobile);
+
+    return () => {
+      window.removeEventListener("resize", checkIfMobile);
+    };
+  }, []);
 
   const nextCard = useCallback(() => {
     setCurrentIndex((prevIndex) =>
@@ -81,7 +90,7 @@ function CardCarousel() {
 
   useEffect(() => {
     let interval;
-    if (autoPlay) {
+    if (autoPlay && !isMobile) {
       interval = setInterval(() => {
         nextCard();
       }, 7000);
@@ -89,53 +98,48 @@ function CardCarousel() {
     return () => {
       if (interval) clearInterval(interval);
     };
-  }, [autoPlay, nextCard]);
+  }, [autoPlay, nextCard, isMobile]);
+
+  if (isMobile) {
+    return null;
+  }
 
   return (
-    <div className="carousel-section">
-      <h2 className="section-title">Noticias Principales</h2>
-      <div className="full-width-carousel-container">
+    <div className="full-width-carousel-container">
+      <div
+        className="carousel-wrapper"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <div
-          className="carousel-wrapper"
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
+          className="full-width-carousel"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
-          <div
-            className="full-width-carousel"
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-          >
-            {cards.map((card) => (
-              <div key={card.id} className="full-width-card">
-                <div className="card-image-container">
-                  <img
-                    src={card.image}
-                    alt={card.title}
-                    className="card-image"
-                  />
-                </div>
-                <div className="card-content">
-                  <h3 className="card-title">{card.title}</h3>
-                  <h4 className="card-subtitle">{card.subtitle}</h4>
-                  <p className="card-description">{card.description}</p>
-                  <a href="." className="card-link">
-                    {card.linkText}
-                  </a>
-                </div>
+          {cards.map((card) => (
+            <div key={card.id} className="full-width-card">
+              <div className="card-image-container">
+                <img
+                  src={card.image}
+                  alt={`Slide ${card.id}`}
+                  className="card-image"
+                />
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
 
         <button
           className="carousel-button prev"
           onClick={() => handleManualNavigation(prevCard)}
+          aria-label="Previous slide"
         >
           <FaChevronLeft />
         </button>
         <button
           className="carousel-button next"
           onClick={() => handleManualNavigation(nextCard)}
+          aria-label="Next slide"
         >
           <FaChevronRight />
         </button>
@@ -146,6 +150,7 @@ function CardCarousel() {
               key={index}
               className={`indicator ${index === currentIndex ? "active" : ""}`}
               onClick={() => goToCard(index)}
+              aria-label={`Go to slide ${index + 1}`}
             />
           ))}
         </div>
