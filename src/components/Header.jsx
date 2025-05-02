@@ -3,7 +3,7 @@ import "../styles/Header.css";
 import userPic from "../images/userPic.jpg";
 import logo from "../images/logo.png";
 import { FaBell, FaTimes } from "react-icons/fa";
-import { FaMessage, FaUser } from "react-icons/fa6";
+import { FaMessage, FaUser, FaHouse, FaUserGroup } from "react-icons/fa6";
 import { IoMdPersonAdd } from "react-icons/io";
 import { IoNewspaper } from "react-icons/io5";
 import { useLocation } from "react-router-dom";
@@ -46,8 +46,8 @@ function Header() {
             </li>
             <li>
               <a
-                href="Compañeros"
-                className={`navItem ${isActive("Eventos") ? "active" : ""}`}
+                href="Discover"
+                className={`navItem ${isActive("Discover") ? "active" : ""}`}
               >
                 Conocer Compañeros
               </a>
@@ -57,7 +57,7 @@ function Header() {
                 href="Noticias"
                 className={`navItem ${isActive("Noticias") ? "active" : ""}`}
               >
-                Noticias
+                Explorar grupos
               </a>
             </li>
           </ul>
@@ -91,6 +91,12 @@ function Header() {
           />
         </div>
 
+        <a href="Home" className="mobile-menu-item">
+          <i>
+            <FaHouse />
+          </i>{" "}
+          Inicio
+        </a>
         <a href="." className="mobile-menu-item">
           <i>
             <FaUser />
@@ -98,7 +104,7 @@ function Header() {
           Perfil
         </a>
         <a
-          href="Home"
+          href="Discover"
           className={`mobile-menu-item ${isActive("Home") ? "active" : ""}`}
           onClick={toggleMenu}
         >
@@ -109,14 +115,14 @@ function Header() {
         </a>
 
         <a
-          href="Noticias"
-          className={`mobile-menu-item ${isActive("Noticias") ? "active" : ""}`}
+          href="Grupos"
+          className={`mobile-menu-item ${isActive("Grupos") ? "active" : ""}`}
           onClick={toggleMenu}
         >
           <i>
-            <IoNewspaper />
+            <FaUserGroup />
           </i>{" "}
-          Noticias
+          Grupos
         </a>
 
         <div className="mobile-menu-divider"></div>

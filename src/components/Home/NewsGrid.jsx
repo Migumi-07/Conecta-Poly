@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import newsImage1 from "../../images/news/compromiso.webp";
-import "../../styles/NewsGrid.css";
+import "../../styles/Home/NewsGrid.css";
 
 function NewsGrid() {
   const sectionRef = useRef(null);

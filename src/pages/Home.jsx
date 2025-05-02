@@ -1,5 +1,5 @@
 import Header from "../components/Header";
-import "../styles/Home.css";
+import "../styles/Home/Home.css";
 import Nav from "../components/Home/NavHome";
 import CardCarousel from "../components/Home/CardCarousel";
 import NewsGrid from "../components/Home/NewsGrid";

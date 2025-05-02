@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaClock } from "react-icons/fa";
-import "../../styles/ContactSection.css";
+import "../../styles/Home/ContactSection.css";
 
 function ContactSection() {
   const sectionRef = useRef(null);

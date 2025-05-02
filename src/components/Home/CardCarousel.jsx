@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from "react";
-import "../../styles/CardCarousel.css";
-import cardImage1 from "../../images/card1.jpg";
-import cardImage2 from "../../images/card2.jpg";
-import cardImage3 from "../../images/card3.jpg";
+import '../../styles/Home/CardCarousel.css'
+import cardImage1 from "../../images/Carousel/card1.jpg";
+import cardImage2 from "../../images/Carousel/card2.jpg";
+import cardImage3 from "../../images/Carousel/card3.jpg";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 function CardCarousel() {

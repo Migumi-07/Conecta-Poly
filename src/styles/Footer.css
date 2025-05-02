@@ -25,6 +25,10 @@
   gap: 40px;
 }
 
+.footer-container:hover {
+  cursor: default;
+}
+
 .footer-brand {
   flex: 1;
   min-width: 250px;

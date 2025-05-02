@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
-import featureImage from "../../images/card2.jpg";
-import "../../styles/FeatureHighlight.css";
+import featureImage from "../../images/Carousel/card2.jpg";
+import "../../styles/Home/FeatureHighlight.css";
 import {
   FaCalendarAlt,
   FaClock,

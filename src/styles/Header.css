@@ -2,7 +2,6 @@
   box-sizing: border-box;
   width: 100%;
   max-width: 100vw;
-
   height: 80px;
   display: flex;
   align-items: center;
@@ -89,6 +88,7 @@
 .userPicture:hover {
   transform: scale(1.1);
   border-color: #00c3a5;
+  cursor: pointer;
 }
 
 .rightIcons {

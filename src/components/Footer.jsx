@@ -69,7 +69,7 @@ function Footer() {
         <div className="footer-system" ref={systemRef}>
           <h4 className="system-title">Sobre Nosotros</h4>
           <div className="system-items">
-            <a href="." className="social-link">
+            <a href="About Us" className="social-link">
               <FaUsers className="social-icon" />
             </a>
           </div>
