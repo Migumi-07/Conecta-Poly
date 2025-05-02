@@ -35,11 +35,8 @@
 /* Contenedor principal del carrusel */
 .full-width-carousel-container {
   position: relative;
-  width: 100vw;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  width: 100%;
+  margin: 0 auto;
   overflow: hidden;
   padding: 0;
 }
@@ -61,6 +58,7 @@
   height: clamp(350px, 60vh, 600px);
   position: relative;
   overflow: hidden;
+  max-width: 100%;
 }
 
 /* Imagen */
@@ -240,6 +238,6 @@
 
 @media (max-width: 768px) {
   .full-width-carousel-container {
-    display: none; 
+    display: none;
   }
 }
