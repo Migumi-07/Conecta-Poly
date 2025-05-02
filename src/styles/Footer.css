@@ -1,0 +1,133 @@
+/* Estilos del footer */
+.site-footer {
+  background: #1a1a1a;
+  color: white;
+  padding: 40px 0 20px;
+  font-family: "Nvidia", sans-serif;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center; /* Centrado vertical */
+  gap: 40px;
+}
+
+.footer-brand {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-title {
+  font-size: 1.8rem;
+  color: #00c3a5;
+  margin-bottom: 10px;
+}
+
+.footer-slogan {
+  font-size: 1rem;
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+.footer-contact {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-icon {
+  color: #00c3a5;
+  font-size: 1.2rem;
+}
+
+.footer-email {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-email:hover {
+  color: #00c3a5;
+}
+
+.footer-system {
+  flex: 1;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.system-title {
+  font-size: 1.2rem;
+  color: #00c3a5;
+  margin-bottom: 15px;
+}
+
+.system-items {
+  display: flex;
+  gap: 15px;
+}
+
+.system-item {
+  font-size: 1rem;
+  color: white;
+}
+
+.footer-social {
+  flex: 1;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.social-title {
+  font-size: 1.2rem;
+  color: #00c3a5;
+  margin-bottom: 15px;
+}
+
+.social-links {
+  display: flex;
+  gap: 20px;
+}
+
+.social-link {
+  color: white;
+  font-size: 1.5rem;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.social-link:hover {
+  color: #00c3a5;
+  transform: translateY(-3px);
+}
+
+.footer-copyright {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #333;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-contact {
+    justify-content: center;
+  }
+}

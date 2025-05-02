@@ -1,0 +1,166 @@
+/* Estilo para la sección destacada */
+.feature-highlight-section {
+  padding: 60px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.feature-highlight-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.feature-content {
+  flex: 1;
+  padding: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.feature-badge {
+  display: inline-block;
+  background: #00c3a5;
+  color: white;
+  padding: 6px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.feature-title {
+  font-family: "Nvidia", sans-serif;
+  font-size: 2.2rem;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.feature-text {
+  font-size: 1.4rem;
+  color: #555;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  max-width: 90%;
+}
+
+.feature-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.feature-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.feature-icon {
+  color: #00c3a5;
+  font-size: 1rem;
+}
+
+.feature-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #00c3a5;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-family: "Nvidia", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.feature-button:hover {
+  background: #00c3a5;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 102, 204, 0.3);
+}
+
+.button-icon {
+  transition: transform 0.3s ease;
+}
+
+.feature-button:hover .button-icon {
+  transform: translateX(3px);
+}
+
+.feature-image-container {
+  flex: 1;
+  position: relative;
+}
+
+.feature-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.feature-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .feature-highlight-container {
+    flex-direction: column;
+  }
+
+  .feature-content {
+    padding: 30px;
+  }
+
+  .feature-image-container {
+    height: 300px;
+  }
+
+  .feature-image-overlay {
+    background: linear-gradient(
+      to top,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0) 30%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+}
+
+@media (max-width: 576px) {
+  .feature-title {
+    font-size: 1.8rem;
+  }
+
+  .feature-text {
+    max-width: 100%;
+  }
+
+  .feature-details {
+    flex-direction: column;
+    gap: 15px;
+  }
+}

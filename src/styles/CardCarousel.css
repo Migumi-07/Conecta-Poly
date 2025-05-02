@@ -1,0 +1,316 @@
+@font-face {
+  font-family: NotoSerif;
+  src: url(../fonts/NotoSerif.ttf);
+}
+
+.carousel-section {
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 30px;
+  position: relative;
+}
+
+.section-title {
+  font-family: NotoSerif;
+  font-size: 2.5rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: #00c3a5;
+  border-radius: 2px;
+}
+
+/* Contenedor principal del carrusel*/
+.full-width-carousel-container {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+  padding: 40px 0;
+}
+
+.carousel-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.full-width-carousel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+/*Cards*/
+.full-width-card {
+  min-width: 100vw;
+  height: 500px;
+  position: relative;
+  overflow: hidden;
+}
+
+/*Imagen*/
+.card-image-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.05);
+}
+
+.card-image-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.2) 75%,
+    transparent 100%
+  );
+  z-index: 1;
+}
+
+/* Contenido de texto */
+.card-content {
+  position: absolute;
+  margin-top: 30px;
+  left: 100px;
+  right: 100px;
+  padding: 40px;
+  color: white;
+  z-index: 2;
+  max-width: 700px;
+  border-radius: 20px;
+}
+
+.card-title {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  font-weight: 700;
+  max-width: 80%;
+  position: relative;
+  display: inline-block;
+}
+
+.card-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #00c3a5;
+}
+
+.card-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  font-family: "Nvidia", sans-serif;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
+}
+
+.card-description {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin-bottom: 25px;
+  font-family: "Nvidia", sans-serif;
+  line-height: 1.6;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  padding: 15px;
+  border-radius: 8px;
+}
+
+/* Botón */
+.card-link {
+  display: inline-block;
+  color: white;
+  font-size: 1rem;
+  padding: 12px 30px;
+  text-decoration: none;
+  font-family: "Nvidia", sans-serif;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.card-link:hover {
+  background-color: #53c4b3e1;
+}
+
+/* Controles de navegación */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.carousel-button svg {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.carousel-button.prev {
+  left: 30px;
+}
+
+.carousel-button.next {
+  right: 30px;
+}
+
+/* Indicadores */
+.carousel-indicators {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  z-index: 10;
+}
+
+.indicator {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.indicator.active {
+  background: #00c3a5;
+  border-color: white;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .card-content {
+    left: 80px;
+    right: 80px;
+  }
+}
+
+@media (max-width: 992px) {
+  .card-content {
+    left: 60px;
+    right: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  .full-width-card {
+    height: 400px;
+  }
+
+  .card-content {
+    padding: 25px;
+    padding-bottom: 40px;
+    left: 50px;
+    right: 50px;
+  }
+
+  .card-title {
+    font-size: 1.8rem;
+    max-width: 90%;
+  }
+
+  .card-subtitle {
+    font-size: 1.3rem;
+  }
+
+  .card-description {
+    font-size: 1rem;
+    padding: 10px;
+    max-width: 90%;
+  }
+
+  .carousel-button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .carousel-button.prev {
+    left: 15px;
+  }
+
+  .carousel-button.next {
+    right: 15px;
+  }
+
+  .indicator {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-title {
+    font-size: 1.7rem;
+    padding-bottom: 10px;
+  }
+
+  .section-title::after {
+    width: 80px;
+    height: 3px;
+  }
+
+  .full-width-card {
+    height: 350px;
+  }
+
+  .card-content {
+    left: 30px;
+    right: 30px;
+    padding: 20px;
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+  }
+
+  .card-link {
+    padding: 10px 20px;
+  }
+}

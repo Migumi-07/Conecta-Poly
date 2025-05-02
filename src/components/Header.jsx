@@ -1,0 +1,142 @@
+import { useState } from "react";
+import "../styles/Header.css";
+import userPic from "../images/userPic.jpg";
+import logo from "../images/logo.png";
+import { FaBell, FaTimes } from "react-icons/fa";
+import { FaMessage, FaUser } from "react-icons/fa6";
+import { IoMdPersonAdd } from "react-icons/io";
+import { IoNewspaper } from "react-icons/io5";
+import { useLocation } from "react-router-dom";
+
+function Header() {
+  const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const isActive = (path) => location.pathname === `/${path}`;
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  return (
+    <>
+      <header className="mainHeader">
+        <img className="mainLogo" src={logo} alt="Logo Conecta Poly" />
+
+        {/* Menú hamburguesa */}
+        <div
+          className={`hamburger-menu ${menuOpen ? "active" : ""}`}
+          onClick={toggleMenu}
+        >
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+        </div>
+
+        {/* Menú principal*/}
+        <nav className="headerNav">
+          <ul className="headerNavOptions">
+            <li>
+              <a
+                href="Home"
+                className={`navItem ${isActive("Home") ? "active" : ""}`}
+              >
+                Inicio
+              </a>
+            </li>
+            <li>
+              <a
+                href="Compañeros"
+                className={`navItem ${isActive("Eventos") ? "active" : ""}`}
+              >
+                Conocer Compañeros
+              </a>
+            </li>
+            <li>
+              <a
+                href="Noticias"
+                className={`navItem ${isActive("Noticias") ? "active" : ""}`}
+              >
+                Noticias
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <div className="rightOptions">
+          <FaMessage className="rightIcons" />
+          <FaBell className="rightIcons" />
+          <img className="userPicture" src={userPic} alt="Foto de perfil" />
+        </div>
+      </header>
+
+      {/* Mobile View */}
+      <div
+        className={`mobile-menu-overlay ${menuOpen ? "active" : ""}`}
+        onClick={toggleMenu}
+      ></div>
+
+      <div className={`mobile-menu ${menuOpen ? "active" : ""}`}>
+        <div className="mobile-menu-header">
+          <FaTimes
+            className="mobile-menu-close"
+            onClick={toggleMenu}
+            size={24}
+            style={{
+              position: "absolute",
+              top: "20px",
+              right: "20px",
+              cursor: "pointer",
+            }}
+          />
+        </div>
+
+        <a href="." className="mobile-menu-item">
+          <i>
+            <FaUser />
+          </i>{" "}
+          Perfil
+        </a>
+        <a
+          href="Home"
+          className={`mobile-menu-item ${isActive("Home") ? "active" : ""}`}
+          onClick={toggleMenu}
+        >
+          <i>
+            <IoMdPersonAdd />
+          </i>{" "}
+          Conocer compañeros
+        </a>
+
+        <a
+          href="Noticias"
+          className={`mobile-menu-item ${isActive("Noticias") ? "active" : ""}`}
+          onClick={toggleMenu}
+        >
+          <i>
+            <IoNewspaper />
+          </i>{" "}
+          Noticias
+        </a>
+
+        <div className="mobile-menu-divider"></div>
+
+        <a href="." className="mobile-menu-item">
+          <i>
+            <FaMessage />
+          </i>{" "}
+          Mensajes
+        </a>
+
+        <a href="." className="mobile-menu-item">
+          <i>
+            <FaBell />
+          </i>{" "}
+          Notificaciones
+        </a>
+      </div>
+    </>
+  );
+}
+
+export default Header;
