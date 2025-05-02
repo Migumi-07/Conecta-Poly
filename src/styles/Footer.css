@@ -4,6 +4,14 @@
   color: white;
   padding: 40px 0 20px;
   font-family: "Nvidia", sans-serif;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.site-footer.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .footer-container {
@@ -13,13 +21,21 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center; /* Centrado vertical */
+  align-items: center;
   gap: 40px;
 }
 
 .footer-brand {
   flex: 1;
   min-width: 250px;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s;
+}
+
+.footer-brand.visible {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .footer-title {
@@ -61,6 +77,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out 0.3s, transform 0.6s ease-out 0.3s;
+}
+
+.footer-system.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .system-title {
@@ -85,6 +109,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.6s ease-out 0.4s, transform 0.6s ease-out 0.4s;
+}
+
+.footer-social.visible {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .social-title {
@@ -116,6 +148,12 @@
   border-top: 1px solid #333;
   color: #888;
   font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity 0.6s ease-out 0.5s;
+}
+
+.footer-copyright.visible {
+  opacity: 1;
 }
 
 /* Responsive */
@@ -129,5 +167,30 @@
 
   .footer-contact {
     justify-content: center;
+  }
+
+  .footer-brand,
+  .footer-system,
+  .footer-social {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .footer-brand.visible,
+  .footer-system.visible,
+  .footer-social.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .footer-brand {
+    transition-delay: 0.2s;
+  }
+  .footer-system {
+    transition-delay: 0.3s;
+  }
+  .footer-social {
+    transition-delay: 0.4s;
   }
 }

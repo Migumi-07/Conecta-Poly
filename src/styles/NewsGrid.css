@@ -1,16 +1,32 @@
 .news-grid-section {
   padding: 60px 20px;
   background: #f8f9fa;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.news-grid-section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .section-subtitle {
   font-family: NotoSerif;
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   color: #333;
   margin-bottom: 30px;
   padding-bottom: 10px;
   text-align: center;
   position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s;
+}
+
+.section-subtitle.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .section-subtitle::after {
@@ -40,10 +56,18 @@
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.news-card.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .news-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) !important;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
@@ -60,6 +84,7 @@
   object-fit: cover;
   transition: transform 0.5s ease;
 }
+
 .news-card:hover .news-image {
   transform: scale(1.05);
 }
@@ -108,19 +133,24 @@
   flex-grow: 1;
 }
 
-.news-link {
-  color: #00c3a5;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
+/* Efectos escalonados para las tarjetas */
+.news-card:nth-child(1) {
+  transition-delay: 0.2s;
 }
-
-.news-link:hover {
-  color: #015f51;
-  gap: 8px;
+.news-card:nth-child(2) {
+  transition-delay: 0.3s;
+}
+.news-card:nth-child(3) {
+  transition-delay: 0.4s;
+}
+.news-card:nth-child(4) {
+  transition-delay: 0.5s;
+}
+.news-card:nth-child(5) {
+  transition-delay: 0.6s;
+}
+.news-card:nth-child(6) {
+  transition-delay: 0.7s;
 }
 
 /* Estilos responsive */
@@ -132,6 +162,10 @@
 
   .section-subtitle {
     font-size: 1.6rem;
+  }
+
+  .news-card {
+    transition-delay: 0.2s !important;
   }
 }
 

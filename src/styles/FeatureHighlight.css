@@ -2,6 +2,14 @@
 .feature-highlight-section {
   padding: 60px 0;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.feature-highlight-section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .feature-highlight-container {
@@ -13,6 +21,14 @@
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s;
+}
+
+.feature-highlight-container.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .feature-content {
@@ -20,6 +36,14 @@
   padding: 40px;
   position: relative;
   z-index: 2;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.8s ease-out 0.4s, transform 0.8s ease-out 0.4s;
+}
+
+.feature-content.visible {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .feature-badge {
@@ -88,7 +112,7 @@
 }
 
 .feature-button:hover {
-  background: #00c3a5;
+  background: #00a38a;
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(0, 102, 204, 0.3);
 }
@@ -104,6 +128,14 @@
 .feature-image-container {
   flex: 1;
   position: relative;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.8s ease-out 0.4s, transform 0.8s ease-out 0.4s;
+}
+
+.feature-image-container.visible {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .feature-image {
