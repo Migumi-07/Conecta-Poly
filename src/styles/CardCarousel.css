@@ -54,7 +54,7 @@
 
 /* Cards */
 .full-width-card {
-  min-width: 100vw;
+  min-width: 100%;
   height: clamp(350px, 60vh, 600px);
   position: relative;
   overflow: hidden;

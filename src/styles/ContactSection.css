@@ -71,6 +71,7 @@
 .contact-card:hover {
   transform: translateY(-5px) !important;
   box-shadow: 0 10px 25px rgba(0, 195, 165, 0.1);
+  cursor: default;
 }
 
 .contact-icon {

@@ -41,6 +41,10 @@
   transition: opacity 0.8s ease-out 0.4s, transform 0.8s ease-out 0.4s;
 }
 
+.feature-content:hover {
+  cursor: default;
+}
+
 .feature-content.visible {
   opacity: 1;
   transform: translateX(0);
