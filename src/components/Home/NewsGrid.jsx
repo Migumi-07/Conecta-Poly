@@ -1,5 +1,10 @@
 import { useEffect, useRef } from "react";
-import newsImage1 from "../../images/news/compromiso.webp";
+import newsImage1 from "../../images/news/cursos.jpg";
+import newsImage2 from "../../images/news/evento.webp";
+import newsImage3 from "../../images/news/becas.webp";
+import newsImage4 from "../../images/news/arquitectura.webp";
+import newsImage5 from "../../images/news/talleres.webp";
+import newsImage6 from "../../images/news/conferencia.webp";
 import "../../styles/Home/NewsGrid.css";
 
 function NewsGrid() {
@@ -29,7 +34,7 @@ function NewsGrid() {
 
     if (currentSubtitleRef) observer.observe(currentSubtitleRef);
     if (currentSectionRef) observer.observe(currentSectionRef);
-    
+
     currentCardsRef.forEach((card) => {
       if (card) observer.observe(card);
     });
@@ -49,7 +54,8 @@ function NewsGrid() {
       title: "Nuevos Cursos Disponibles",
       category: "Educación",
       date: "15 Junio 2024",
-      excerpt: "Explora nuestra nueva oferta académica para el próximo semestre",
+      excerpt:
+        "Explora nuestra nueva oferta académica para el próximo semestre",
       image: newsImage1,
     },
     {
@@ -57,8 +63,9 @@ function NewsGrid() {
       title: "Evento de Bienvenida",
       category: "Eventos",
       date: "20 Junio 2024",
-      excerpt: "Participa en nuestro evento de bienvenida para nuevos estudiantes",
-      image: newsImage1,
+      excerpt:
+        "Participa en nuestro evento de bienvenida para nuevos estudiantes",
+      image: newsImage2,
     },
     {
       id: 3,
@@ -66,7 +73,7 @@ function NewsGrid() {
       category: "Educación",
       date: "25 Junio 2024",
       excerpt: "Nuevas becas disponibles para estudiantes destacados",
-      image: newsImage1,
+      image: newsImage3,
     },
     {
       id: 4,
@@ -74,15 +81,16 @@ function NewsGrid() {
       category: "Actividades",
       date: "1 Julio 2024",
       excerpt: "Inscríbete en nuestros talleres extracurriculares de verano",
-      image: newsImage1,
+      image: newsImage5,
     },
     {
       id: 5,
-      title: "Nuevo Laboratorio",
+      title: "Renovación del gimnasio al aire libre",
       category: "Infraestructura",
       date: "5 Julio 2024",
-      excerpt: "Inauguramos nuevo laboratorio de tecnología avanzada",
-      image: newsImage1,
+      excerpt:
+        "La membrana arquitectónica del gimnasio al aire libre y el domo del bloque P42 serán renovados",
+      image: newsImage4,
     },
     {
       id: 6,
@@ -90,7 +98,7 @@ function NewsGrid() {
       category: "Eventos",
       date: "10 Julio 2024",
       excerpt: "Prestigiosos académicos visitarán nuestro campus",
-      image: newsImage1,
+      image: newsImage6,
     },
   ];
 

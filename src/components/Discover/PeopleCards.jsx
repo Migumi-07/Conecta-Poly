@@ -10,6 +10,9 @@ import {
 import "../../styles/Discover/PeopleCards.css";
 import profile1 from "../../images/ProfilePictures/profile1.jpg";
 import profile2 from "../../images/ProfilePictures/profile2.jpg";
+import profile3 from "../../images/ProfilePictures/profile3.jpeg";
+import profile4 from "../../images/ProfilePictures/profile4.jpeg";
+
 function PeopleCards() {
   const people = [
     {
@@ -33,6 +36,28 @@ function PeopleCards() {
       longDesc:
         "Soy capucho del poli y me gusta hacer tiktoks, no hay mucho que pueda decir",
       interests: ["Marketing", "Startups", "Data Analytics", "Tiktok"],
+    },
+    {
+      id: 3,
+      name: "Travieso Scott",
+      age: 22,
+      role: "Estudiante de música",
+      image: profile3,
+      shortDesc: "Todo un travieso",
+      longDesc:
+        "Soy rapero de santo domingo y me gustan mucho los cantores del chipuco",
+      interests: ["Música", "Rap", "ParalytikoZ", "Soundcloud"],
+    },
+    {
+      id: 4,
+      name: "Downiel Gonzalez",
+      age: 18,
+      role: "Estudiante de efectos especiales",
+      image: profile4,
+      shortDesc: "Soy un poco especial",
+      longDesc:
+        "En la casa me dicen que soy muy especial, no entiendo el porqué pero eso dicen",
+      interests: ["Pokemon", "Digimon", "Hombres", "Efectos"],
     },
   ];
 
@@ -66,56 +91,62 @@ function PeopleCards() {
 
   return (
     <div className="people-container">
-      <h2 className="section-title">
-        <span className="title-decoration"></span>
-        Conoce a la Comunidad
-      </h2>
+      <div className="background-pattern"></div>
+      <div className="content-wrapper">
+        <h2 className="section-title">
+          <span className="title-decoration"></span>
+          Conoce a la Comunidad
+          <span className="title-decoration"></span>
+        </h2>
 
-      <div className="cards-wrapper">
-        <button className="nav-button prev" onClick={prevCard}>
-          <FaChevronLeft />
-        </button>
+        <div className="cards-wrapper">
+          <button className="nav-button prev" onClick={prevCard}>
+            <FaChevronLeft />
+          </button>
 
-        <div className={`people-card ${direction ? `slide-${direction}` : ""}`}>
-          {people.length > 0 && (
-            <>
-              <div
-                className="card-image"
-                style={{
-                  backgroundImage: `url(${people[currentIndex].image})`,
-                }}
-              >
-                <div className="card-overlay">
-                  <h3>
-                    {people[currentIndex].name}, {people[currentIndex].age}
-                  </h3>
-                  <p>{people[currentIndex].shortDesc}</p>
-                </div>
-                <button
-                  className="details-button"
-                  onClick={() => openDetails(people[currentIndex])}
+          <div
+            className={`people-card ${direction ? `slide-${direction}` : ""}`}
+          >
+            {people.length > 0 && (
+              <>
+                <div
+                  className="card-image"
+                  style={{
+                    backgroundImage: `url(${people[currentIndex].image})`,
+                  }}
                 >
-                  <FaInfoCircle /> Ver más
-                </button>
-              </div>
-              <div className="card-footer">
-                <button className="action-button dislike" onClick={prevCard}>
-                  <FaTimes />
-                </button>
-                <span className="role-badge">
-                  <FaUser /> {people[currentIndex].role}
-                </span>
-                <button className="action-button like" onClick={nextCard}>
-                  <FaHeart />
-                </button>
-              </div>
-            </>
-          )}
-        </div>
+                  <div className="card-overlay">
+                    <h3>
+                      {people[currentIndex].name}, {people[currentIndex].age}
+                    </h3>
+                    <p>{people[currentIndex].shortDesc}</p>
+                  </div>
+                  <button
+                    className="details-button"
+                    onClick={() => openDetails(people[currentIndex])}
+                  >
+                    <FaInfoCircle /> Ver más
+                  </button>
+                </div>
+                <div className="card-footer">
+                  <button className="action-button dislike" onClick={prevCard}>
+                    <FaTimes />
+                  </button>
+                  <span className="role-badge">
+                    <FaUser /> {people[currentIndex].role}
+                  </span>
+                  <button className="action-button like" onClick={nextCard}>
+                    <FaHeart />
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
 
-        <button className="nav-button next" onClick={nextCard}>
-          <FaChevronRight />
-        </button>
+          <button className="nav-button next" onClick={nextCard}>
+            <FaChevronRight />
+          </button>
+        </div>
       </div>
 
       {/* Modal de Detalles */}
