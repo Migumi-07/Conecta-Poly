@@ -104,7 +104,7 @@ function NewsGrid() {
 
   return (
     <section className="news-grid-section" ref={sectionRef}>
-      <h3 className="section-subtitle" id="Noticias" ref={subtitleRef}>
+      <h3 className="section-subtitle-news" id="Noticias" ref={subtitleRef}>
         Más Noticias
       </h3>
       <div className="news-grid">

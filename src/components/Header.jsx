@@ -5,7 +5,6 @@ import logo from "../images/logo.png";
 import { FaBell, FaTimes } from "react-icons/fa";
 import { FaMessage, FaUser, FaHouse, FaUserGroup } from "react-icons/fa6";
 import { IoMdPersonAdd } from "react-icons/io";
-import { IoNewspaper } from "react-icons/io5";
 import { useLocation } from "react-router-dom";
 
 function Header() {
