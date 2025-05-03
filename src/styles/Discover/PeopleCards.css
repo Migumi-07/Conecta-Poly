@@ -356,7 +356,6 @@
   transform: translateY(-2px);
 }
 
-/* Responsive para tablets */
 @media (max-width: 768px) {
   .content-wrapper {
     padding: 30px;
@@ -377,7 +376,6 @@
   }
 }
 
-/* Responsive para móviles */
 @media (max-width: 576px) {
   .content-wrapper {
     padding: 20px;
@@ -398,7 +396,6 @@
   }
 }
 
-/* Optimización específica para laptops */
 @media (min-width: 992px) and (max-width: 1600px) {
   .people-container {
     padding: 50px 30px;
@@ -430,7 +427,6 @@
   }
 }
 
-/* Deshabilitar efectos hover en dispositivos táctiles */
 @media (hover: none) {
   .action-button:hover,
   .nav-button:hover,
