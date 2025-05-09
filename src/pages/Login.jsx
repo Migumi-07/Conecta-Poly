@@ -6,6 +6,7 @@ import "../styles/Login.css";
 function Login() {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoginForm, setIsLoginForm] = useState(true); // Nuevo estado para controlar qué formulario mostrar
   const navigate = useNavigate();
 
   const isFormValid = user.trim() !== "" && password.trim() !== "";
@@ -17,6 +18,12 @@ function Login() {
     }
   };
 
+  const toggleForm = () => {
+    setIsLoginForm(!isLoginForm);
+    setUser("");
+    setPassword("");
+  };
+
   return (
     <>
       <Header />
@@ -24,12 +31,16 @@ function Login() {
         <div className="loginContent">
           <div className="loginTextContainer">
             <h1>Conecta Poly</h1>
-            <p>Introduzca su usuario y contraseña</p>
+            <p>
+              {isLoginForm
+                ? "Ingresa tú Correo y contraseña"
+                : "Crea una nueva cuenta"}
+            </p>
           </div>
           <form className="inputContainer" onSubmit={handleSubmit}>
             <input
               type="text"
-              placeholder="Usuario"
+              placeholder="Correo"
               value={user}
               onChange={(e) => setUser(e.target.value)}
               required
@@ -41,14 +52,55 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+
+            {!isLoginForm && (
+              <input
+                type="password"
+                placeholder="Confirmar Contraseña"
+                required
+              />
+            )}
+
             <button
               className={`loginSubmitButton ${isFormValid ? "active" : ""}`}
               type="submit"
               disabled={!isFormValid}
             >
-              Ingresar
+              {isLoginForm ? "Ingresar" : "Registrarse"}
             </button>
           </form>
+
+          <div className="toggleFormText">
+            {isLoginForm ? (
+              <p>
+                ¿No tienes una cuenta?{" "}
+                <span
+                  onClick={toggleForm}
+                  style={{
+                    cursor: "pointer",
+                    color: "#00c3a5",
+                    textDecoration: "underline",
+                  }}
+                >
+                  Regístrate aquí 
+                </span>
+              </p>
+            ) : (
+              <p>
+                ¿Ya tienes una cuenta?{" "}
+                <span
+                  onClick={toggleForm}
+                  style={{
+                    cursor: "pointer",
+                    color: "#00c3a5",
+                    textDecoration: "underline",
+                  }}
+                >
+                  Inicia sesión
+                </span>
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </>

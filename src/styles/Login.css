@@ -93,3 +93,20 @@ input:focus {
     padding: 12px;
   }
 }
+
+.toggleFormText {
+  text-align: center;
+  margin-top: 20px;
+  color: #666;
+}
+
+.toggleFormText span {
+  color: #00c3a5;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.toggleFormText span:hover {
+  color: #009688;
+}
