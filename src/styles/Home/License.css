@@ -1,4 +1,3 @@
-/* License.css */
 @font-face {
   font-family: Nvidia;
   src: url(../../fonts/Nvidia.ttf);
@@ -267,6 +266,92 @@
 .cart-table td:nth-child(5) {
   text-align: center;
   width: 120px;
+}
+
+.license-card:nth-child(2) {
+  position: relative;
+  border: 2px solid #333;
+}
+
+.license-card:nth-child(2)::before {
+  content: "Recomendado";
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  background: #25c79e;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.compare-plans-section {
+  margin-top: 50px;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  animation: fadeIn 1s ease-out;
+}
+
+.compare-plans-section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  color: #00c3a5;
+  font-family: "Nvidia";
+  position: relative;
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Nvidia";
+  animation: fadeIn 1s ease-out;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.compare-table th,
+.compare-table td {
+  border: 1px solid #e0e0e0;
+  padding: 16px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.compare-table th {
+  background-color: #f8f8f8;
+  font-weight: bold;
+  color: #333;
+}
+
+.compare-table td {
+  background-color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.compare-table td.highlight {
+  background-color: rgba(0, 195, 165, 0.1);
+  font-weight: bold;
+  color: #00c3a5;
+}
+
+.compare-table tr:hover td {
+  background-color: #f0fdfa;
+}
+
+@media (max-width: 768px) {
+  .compare-table th,
+  .compare-table td {
+    font-size: 0.9rem;
+    padding: 12px;
+  }
+
+  .compare-plans-section {
+    padding: 20px 10px;
+  }
 }
 
 @keyframes fadeIn {
