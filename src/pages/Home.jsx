@@ -7,6 +7,7 @@ import FeatureHighlight from "../components/Home/FeatureHighlight";
 import Footer from "../components/Footer";
 import ContactSection from "../components/Home/ContactSection";
 import ScrollToTopArrow from "../components/Home/ScrollToTopArrow";
+import License from "../components/Home/License";
 function Home() {
   return (
     <>
@@ -15,8 +16,10 @@ function Home() {
       <Nav />
       <NewsGrid />
       <FeatureHighlight />
+      <License />
       <ContactSection />
       <ScrollToTopArrow />
+
       <Footer />
     </>
   );

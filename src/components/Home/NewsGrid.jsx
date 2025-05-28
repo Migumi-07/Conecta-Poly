@@ -54,8 +54,7 @@ function NewsGrid() {
       title: "Nuevos Cursos Disponibles",
       category: "Educación",
       date: "15 Junio 2024",
-      excerpt:
-        "Explora nuestra nueva oferta académica para el próximo semestre",
+      excerpt: "Explora nuestra nueva oferta académica para el próximo semestre",
       image: newsImage1,
     },
     {
@@ -63,8 +62,7 @@ function NewsGrid() {
       title: "Evento de Bienvenida",
       category: "Eventos",
       date: "20 Junio 2024",
-      excerpt:
-        "Participa en nuestro evento de bienvenida para nuevos estudiantes",
+      excerpt: "Participa en nuestro evento de bienvenida para nuevos estudiantes",
       image: newsImage2,
     },
     {
@@ -88,8 +86,7 @@ function NewsGrid() {
       title: "Renovación del gimnasio al aire libre",
       category: "Infraestructura",
       date: "5 Julio 2024",
-      excerpt:
-        "La membrana arquitectónica del gimnasio al aire libre y el domo del bloque P42 serán renovados",
+      excerpt: "La membrana arquitectónica del gimnasio al aire libre y el domo del bloque P42 serán renovados",
       image: newsImage4,
     },
     {
@@ -117,11 +114,13 @@ function NewsGrid() {
             <div className="news-image-container">
               <img src={news.image} alt={news.title} className="news-image" />
               <span className="news-category">{news.category}</span>
+              <div className="image-overlay"></div>
             </div>
             <div className="news-content">
-              <h4 className="news-title">{news.title}</h4>
               <time className="news-date">{news.date}</time>
+              <h4 className="news-title">{news.title}</h4>
               <p className="news-excerpt">{news.excerpt}</p>
+              <span className="news-read-more">Leer más →</span>
             </div>
           </article>
         ))}
