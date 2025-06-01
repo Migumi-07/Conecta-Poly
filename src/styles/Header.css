@@ -231,6 +231,10 @@
   visibility: visible;
 }
 
+.userName {
+  color: black;
+}
+
 /* Responsive Design */
 @media (max-width: 992px) {
   .headerNav,

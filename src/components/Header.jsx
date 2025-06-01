@@ -6,10 +6,12 @@ import { FaBell, FaTimes } from "react-icons/fa";
 import { FaMessage, FaUser, FaHouse, FaUserGroup } from "react-icons/fa6";
 import { IoMdPersonAdd } from "react-icons/io";
 import { useLocation } from "react-router-dom";
+import { useUser } from "../context/userContext";
 
 function Header() {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
+  const { user } = useUser();
 
   const isActive = (path) => location.pathname === `/${path}`;
 
@@ -65,7 +67,16 @@ function Header() {
         <div className="rightOptions">
           <FaMessage className="rightIcons" />
           <FaBell className="rightIcons" />
-          <img className="userPicture" src={userPic} alt="Foto de perfil" />
+          <img 
+            className="userPicture" 
+            src={user?.avatar || userPic} 
+            alt="Foto de perfil" 
+          />
+          {user?.name ? (
+            <span className="userName">{user.name}</span>
+          ) : user?.username ? (
+            <span className="userName">{user.username}</span>
+          ) : null}
         </div>
       </header>
 
