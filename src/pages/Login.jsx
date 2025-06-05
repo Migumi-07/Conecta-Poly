@@ -31,11 +31,11 @@ function Login() {
 
   // Validaciones regex
   const soloTextoRegex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/;
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@elpoli\.edu\.co$/;
   const passwordRegex =
     /^(?=.*[A-Z])(?=(?:.*\d){2,})(?=.*[!@#$%^&*()_\-+=\[\]{};':"\\|,.<>/?]).{8,}$/;
 
-  // Calcular edad 
+  // Calcular edad
   useEffect(() => {
     if (fechaNacimiento) {
       const hoy = new Date();
@@ -52,7 +52,8 @@ function Login() {
       const primerNombre = nombres[0] || "";
       const inicialPrimerNombre = primerNombre.charAt(0).toLowerCase();
 
-      const primerApellido = apellidos.trim().split(" ")[0]?.toLowerCase() || "";
+      const primerApellido =
+        apellidos.trim().split(" ")[0]?.toLowerCase() || "";
 
       const dia = String(fechaNac.getDate()).padStart(2, "0");
       const mes = String(fechaNac.getMonth() + 1).padStart(2, "0");
@@ -68,12 +69,16 @@ function Login() {
   // Validaciones individuales
   const nombreValido = soloTextoRegex.test(nombre.trim());
   const apellidosValidos = soloTextoRegex.test(apellidos.trim());
-  const fechaValida = fechaNacimiento !== "" && new Date(fechaNacimiento) < new Date();
+  const fechaValida =
+    fechaNacimiento !== "" && new Date(fechaNacimiento) < new Date();
   const edadValida = edad !== null && edad >= 18;
-  const correoValido = emailRegex.test(correo.trim());
+  const correoValido =
+    emailRegex.test(correo.trim()) && correo.trim().endsWith("@elpoli.edu.co");
   const passwordValido = passwordRegex.test(password);
   const passwordsCoinciden = password === confirmPassword;
   const imagenValida = imagenSeleccionada !== "";
+  const loginEmailValido = emailRegex.test(loginEmail.trim());
+  const loginPasswordValido = loginPassword.trim().length >= 8; // o la regla que prefieras
 
   // Formulario válido solo para registro
   const isFormValid =
@@ -90,21 +95,21 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isLoginForm) {
-  
       if (loginEmail.trim() && loginPassword.trim()) {
-      
         setUser({
           username: loginEmail,
-          name: "Usuario Ejemplo",
-          avatar: avatar1 
+          name: usuario,
+          avatar: avatar4,
         });
         navigate("/Home");
       }
     } else {
       // Registro
       if (isFormValid) {
-        const selectedImg = imagenes.find(img => img.id === imagenSeleccionada);
-        
+        const selectedImg = imagenes.find(
+          (img) => img.id === imagenSeleccionada
+        );
+
         const newUser = {
           username: usuario,
           name: nombre,
@@ -112,9 +117,9 @@ function Login() {
           email: correo,
           birthDate: fechaNacimiento,
           age: edad,
-          avatar: selectedImg.src
+          avatar: selectedImg.src,
         };
-        
+
         setUser(newUser);
         navigate("/Home");
       }
@@ -181,6 +186,12 @@ function Login() {
                   onChange={(e) => setLoginEmail(e.target.value)}
                   required
                 />
+                {!loginEmailValido && loginEmail && (
+                  <p style={{ color: "red", fontSize: "12px" }}>
+                    Por favor ingresa un correo válido.
+                  </p>
+                )}
+
                 <input
                   type="password"
                   placeholder="Contraseña"
@@ -188,6 +199,21 @@ function Login() {
                   onChange={(e) => setLoginPassword(e.target.value)}
                   required
                 />
+                {!loginPasswordValido && loginPassword && (
+                  <p style={{ color: "red", fontSize: "12px" }}>
+                    La contraseña debe tener al menos 8 caracteres.
+                  </p>
+                )}
+
+                <button
+                  className={`loginSubmitButton ${
+                    loginEmailValido && loginPasswordValido ? "active" : ""
+                  }`}
+                  type="submit"
+                  disabled={!loginEmailValido || !loginPasswordValido}
+                >
+                  Ingresar
+                </button>
               </>
             ) : (
               <>
@@ -249,7 +275,7 @@ function Login() {
                 />
                 {!correoValido && correo && (
                   <p style={{ color: "red", fontSize: "12px" }}>
-                    Correo electrónico inválido
+                    Debes usar tú correo institucional
                   </p>
                 )}
 
@@ -339,20 +365,6 @@ function Login() {
                   Limpiar
                 </button>
               </>
-            )}
-
-            {isLoginForm && (
-              <button
-                className={`loginSubmitButton ${
-                  loginEmail.trim() !== "" && loginPassword.trim() !== ""
-                    ? "active"
-                    : ""
-                }`}
-                type="submit"
-                disabled={loginEmail.trim() === "" || loginPassword.trim() === ""}
-              >
-                Ingresar
-              </button>
             )}
           </form>
 
