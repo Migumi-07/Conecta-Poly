@@ -142,69 +142,6 @@ const License = () => {
 
   return (
     <div className="license-container">
-      <div className="compare-plans-section">
-        <h2>Comparar planes</h2>
-        <table className="compare-table">
-          <thead>
-            <tr>
-              <th>Características</th>
-              <th>Básica</th>
-              <th>Standard</th>
-              <th>Premium</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Acceso a eventos y noticias</td>
-              <td>✅</td>
-              <td>✅</td>
-              <td>✅</td>
-            </tr>
-            <tr>
-              <td>Eventos activos simultáneos</td>
-              <td>10</td>
-              <td>14</td>
-              <td>20</td>
-            </tr>
-            <tr>
-              <td>Subida de archivos</td>
-              <td>50MB</td>
-              <td>50MB</td>
-              <td>500MB</td>
-            </tr>
-            <tr>
-              <td>Conexiones</td>
-              <td>Hasta 50</td>
-              <td>Hasta 100</td>
-              <td>Ilimitadas</td>
-            </tr>
-            <tr>
-              <td>Foros y grupos públicos</td>
-              <td>❌</td>
-              <td>✅</td>
-              <td>✅</td>
-            </tr>
-            <tr>
-              <td>Grupos privados</td>
-              <td>❌</td>
-              <td>✅</td>
-              <td>✅</td>
-            </tr>
-            <tr>
-              <td>Crear eventos o grupos privados</td>
-              <td>❌</td>
-              <td>❌</td>
-              <td>✅</td>
-            </tr>
-            <tr>
-              <td>Perfil/grupo destacado</td>
-              <td>❌</td>
-              <td>❌</td>
-              <td>✅</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
       <header className="license-header">
         <h1>Mejora tu plan</h1>
         <p>
@@ -340,6 +277,69 @@ const License = () => {
         ) : (
           <p className="empty-cart">No hay licencias en el carrito</p>
         )}
+      </div>
+      <div className="compare-plans-section">
+        <h2>Comparar planes</h2>
+        <table className="compare-table">
+          <thead>
+            <tr>
+              <th>Características</th>
+              <th>Básica</th>
+              <th>Standard</th>
+              <th>Premium</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Acceso a eventos y noticias</td>
+              <td>✅</td>
+              <td>✅</td>
+              <td>✅</td>
+            </tr>
+            <tr>
+              <td>Eventos activos simultáneos</td>
+              <td>10</td>
+              <td>14</td>
+              <td>20</td>
+            </tr>
+            <tr>
+              <td>Subida de archivos</td>
+              <td>50MB</td>
+              <td>50MB</td>
+              <td>500MB</td>
+            </tr>
+            <tr>
+              <td>Conexiones</td>
+              <td>Hasta 50</td>
+              <td>Hasta 100</td>
+              <td>Ilimitadas</td>
+            </tr>
+            <tr>
+              <td>Foros y grupos públicos</td>
+              <td>❌</td>
+              <td>✅</td>
+              <td>✅</td>
+            </tr>
+            <tr>
+              <td>Grupos privados</td>
+              <td>❌</td>
+              <td>✅</td>
+              <td>✅</td>
+            </tr>
+            <tr>
+              <td>Crear eventos o grupos privados</td>
+              <td>❌</td>
+              <td>❌</td>
+              <td>✅</td>
+            </tr>
+            <tr>
+              <td>Perfil/grupo destacado</td>
+              <td>❌</td>
+              <td>❌</td>
+              <td>✅</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   );
