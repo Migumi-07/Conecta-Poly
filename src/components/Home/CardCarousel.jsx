@@ -122,7 +122,7 @@ function CardCarousel() {
                 <img
                   src={card.image}
                   alt={`Slide ${card.id}`}
-                  className="card-image"
+                  className="carousel-card-image "
                 />
               </div>
             </div>
