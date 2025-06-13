@@ -58,7 +58,7 @@ function Header() {
             </li>
             <li>
               <a
-                href="Noticias"
+                href="Grupos"
                 className={`navItem ${isActive("Noticias") ? "active" : ""}`}
               >
                 Explorar grupos

@@ -1,0 +1,56 @@
+.group-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  font-size: 0.8rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+
+.group-meta span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.members-count {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.dark-mode .members-count {
+  color: #bdbdbd;
+}
+
+.action-button.join {
+  background: #e0fdf4;
+  color: #00c3a5;
+}
+
+.action-button.joined {
+  background: #00c3a5;
+  color: white;
+}
+
+.dark-mode .action-button.join {
+  background: #1e3a2e;
+  color: #00c3a5;
+}
+
+.dark-mode .action-button.joined {
+  background: #00c3a5;
+  color: white;
+}
+
+.nvidia-button.joined {
+  background: #00a38a;
+}
+
+.modal-image {
+  width: 120px;
+  height: 80px;
+  border-radius: 10px;
+}

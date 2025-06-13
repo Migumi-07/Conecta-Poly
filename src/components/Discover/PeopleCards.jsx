@@ -1,19 +1,11 @@
 import { useState } from "react";
-import {
-  FaUser,
-  FaHeart,
-  FaTimes,
-  FaChevronLeft,
-  FaChevronRight,
-  FaInfoCircle,
-} from "react-icons/fa";
+import { FaUser, FaHeart, FaTimes, FaInfoCircle } from "react-icons/fa";
 import "../../styles/Discover/PeopleCards.css";
 import profile1 from "../../images/ProfilePictures/profile1.jpg";
 import profile2 from "../../images/ProfilePictures/profile2.jpg";
 import profile3 from "../../images/ProfilePictures/profile3.jpeg";
 import profile4 from "../../images/ProfilePictures/profile4.jpeg";
-
-function PeopleCards() {
+function PeopleCardsGrid() {
   const people = [
     {
       id: 1,
@@ -59,27 +51,29 @@ function PeopleCards() {
         "En la casa me dicen que soy muy especial, no entiendo el porqué pero eso dicen",
       interests: ["Pokemon", "Digimon", "Hombres", "Efectos"],
     },
+    {
+      id: 5,
+      name: "María Fernández",
+      age: 23,
+      role: "Diseñadora Gráfica",
+      image: profile1,
+      shortDesc: "Especialista en diseño UX/UI",
+      longDesc: "Apasionada por crear interfaces intuitivas y hermosas.",
+      interests: ["Figma", "Adobe XD", "Illustrator", "Photoshop"],
+    },
+    {
+      id: 6,
+      name: "Juan Pérez",
+      age: 25,
+      role: "Desarrollador Full Stack",
+      image: profile2,
+      shortDesc: "Experto en React y Node.js",
+      longDesc: "Me encanta crear aplicaciones web completas desde cero.",
+      interests: ["JavaScript", "React", "Node.js", "MongoDB"],
+    },
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedPerson, setSelectedPerson] = useState(null);
-  const [direction, setDirection] = useState(null);
-
-  const nextCard = () => {
-    setDirection("right");
-    setTimeout(() => {
-      setCurrentIndex((prev) => (prev + 1) % people.length);
-      setDirection(null);
-    }, 200);
-  };
-
-  const prevCard = () => {
-    setDirection("left");
-    setTimeout(() => {
-      setCurrentIndex((prev) => (prev - 1 + people.length) % people.length);
-      setDirection(null);
-    }, 200);
-  };
 
   const openDetails = (person) => {
     setSelectedPerson(person);
@@ -90,62 +84,54 @@ function PeopleCards() {
   };
 
   return (
-    <div className="people-container">
-      <div className="background-pattern"></div>
-      <div className="content-wrapper">
-        <h2 className="section-title">
-          <span className="title-decoration"></span>
-          Conoce a la Comunidad
-          <span className="title-decoration"></span>
-        </h2>
+    <div className="people-grid-container">
+      <div className="top-pink-section">
+        <div className="content-wrapper">
+          <h2 className="section-title">
+            <span className="title-decoration"></span>
+            Conoce a tus Compañeros
+            <span className="title-decoration"></span>
+          </h2>
+        </div>
+      </div>
 
-        <div className="cards-wrapper">
-          <button className="nav-button prev" onClick={prevCard}>
-            <FaChevronLeft />
-          </button>
-
-          <div
-            className={`people-card ${direction ? `slide-${direction}` : ""}`}
-          >
-            {people.length > 0 && (
-              <>
+      {/* Parte inferior con fondo blanco */}
+      <div className="bottom-white-section">
+        <div className="content-wrapper">
+          <div className="people-grid">
+            {people.map((person) => (
+              <div key={person.id} className="people-card">
                 <div
                   className="card-image"
-                  style={{
-                    backgroundImage: `url(${people[currentIndex].image})`,
-                  }}
+                  style={{ backgroundImage: `url(${person.image})` }}
                 >
                   <div className="card-overlay">
                     <h3>
-                      {people[currentIndex].name}, {people[currentIndex].age}
+                      {person.name}, {person.age}
                     </h3>
-                    <p>{people[currentIndex].shortDesc}</p>
+                    <p>{person.shortDesc}</p>
                   </div>
                   <button
                     className="details-button"
-                    onClick={() => openDetails(people[currentIndex])}
+                    onClick={() => openDetails(person)}
                   >
                     <FaInfoCircle /> Ver más
                   </button>
                 </div>
                 <div className="card-footer">
-                  <button className="action-button dislike" onClick={prevCard}>
+                  <button className="action-button dislike">
                     <FaTimes />
                   </button>
                   <span className="role-badge">
-                    <FaUser /> {people[currentIndex].role}
+                    <FaUser /> {person.role}
                   </span>
-                  <button className="action-button like" onClick={nextCard}>
+                  <button className="action-button like">
                     <FaHeart />
                   </button>
                 </div>
-              </>
-            )}
+              </div>
+            ))}
           </div>
-
-          <button className="nav-button next" onClick={nextCard}>
-            <FaChevronRight />
-          </button>
         </div>
       </div>
 
@@ -189,7 +175,6 @@ function PeopleCards() {
                 className="nvidia-button"
                 onClick={() => {
                   closeDetails();
-                  setTimeout(nextCard, 300);
                 }}
               >
                 <FaHeart /> Conectar
@@ -202,4 +187,4 @@ function PeopleCards() {
   );
 }
 
-export default PeopleCards;
+export default PeopleCardsGrid;
