@@ -1,7 +1,59 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/Home/License.css";
 
+const StarRating = ({ rating = 0, onRatingChange, interactive = true }) => {
+  const [hoverRating, setHoverRating] = useState(0);
+  const [selectedRating, setSelectedRating] = useState(rating);
+
+  const handleClick = (value) => {
+    if (interactive) {
+      setSelectedRating(value);
+      if (onRatingChange) {
+        onRatingChange(value);
+      }
+    }
+  };
+
+  const handleMouseEnter = (value) => {
+    if (interactive) {
+      setHoverRating(value);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (interactive) {
+      setHoverRating(0);
+    }
+  };
+
+  return (
+    <div className="star-rating" onMouseLeave={handleMouseLeave}>
+      {[1, 2, 3, 4, 5].map((star) => (
+        <span
+          key={star}
+          className={`star ${
+            (hoverRating || selectedRating) >= star ? "filled" : ""
+          } ${interactive ? "interactive" : ""}`}
+          onClick={() => handleClick(star)}
+          onMouseEnter={() => handleMouseEnter(star)}
+        >
+          ★
+        </span>
+      ))}
+    </div>
+  );
+};
+
 const License = () => {
+  const handlePurchase = () => {
+    if (
+      window.confirm(`¿Confirmas la compra por ${formatCurrency(total)} COP?`)
+    ) {
+      console.log("Compra confirmada:", cart);
+      alert("¡Gracias por tu compra!");
+      setCart([]);
+    }
+  };
   const licenseTypes = [
     {
       name: "Básica",
@@ -12,6 +64,8 @@ const License = () => {
         "Subida de archivos hasta 50MB",
         "Conexiones con hasta 50 usuarios",
       ],
+      averageRating: 3.8,
+      userRatings: [],
     },
     {
       name: "Standard",
@@ -24,6 +78,8 @@ const License = () => {
         "Organización de actividades o eventos",
         "Hasta 14 eventos activos simultáneos",
       ],
+      averageRating: 4.2,
+      userRatings: [],
     },
     {
       name: "Premium",
@@ -36,6 +92,8 @@ const License = () => {
         "Crear un evento y/o grupo privado",
         "Hasta 20 eventos activos simultáneos",
       ],
+      averageRating: 4.7,
+      userRatings: [],
     },
   ];
 
@@ -43,6 +101,9 @@ const License = () => {
   const [cart, setCart] = useState([]);
   const [animatingCard, setAnimatingCard] = useState(null);
   const [visibleSections, setVisibleSections] = useState([]);
+  const [userRatings, setUserRatings] = useState(() => {
+    return licenseTypes.map(() => null);
+  });
 
   const handleQuantityChange = (index, value) => {
     if (index === 0) return;
@@ -100,6 +161,25 @@ const License = () => {
     } else {
       setCart(cart.filter((_, index) => index !== indexToRemove));
     }
+  };
+
+  const handleRatingChange = (licenseIndex, newRating) => {
+    console.log(
+      `Nueva valoración para ${licenseTypes[licenseIndex].name}:`,
+      newRating
+    );
+
+    const newUserRatings = [...userRatings];
+    newUserRatings[licenseIndex] = newRating;
+    setUserRatings(newUserRatings);
+
+    licenseTypes[licenseIndex].userRatings.push(newRating);
+    const sum = licenseTypes[licenseIndex].userRatings.reduce(
+      (a, b) => a + b,
+      0
+    );
+    licenseTypes[licenseIndex].averageRating =
+      sum / licenseTypes[licenseIndex].userRatings.length;
   };
 
   const subtotal = cart.reduce((sum, item) => sum + item.total, 0);
@@ -164,6 +244,15 @@ const License = () => {
                 ? "Gratis"
                 : `${formatCurrency(license.price)} COP`}
             </div>
+
+            <div className="license-rating">
+              <StarRating rating={license.averageRating} interactive={false} />
+              <span className="rating-text">
+                {license.averageRating.toFixed(1)} (
+                {license.userRatings.length + 10} valoraciones)
+              </span>
+            </div>
+
             <ul className="license-features">
               {license.features.map((feature, i) => (
                 <li key={i}>{feature}</li>
@@ -195,6 +284,20 @@ const License = () => {
                 </div>
               </>
             )}
+
+            <div className="user-rating-section">
+              <h4>Tu valoración</h4>
+              {userRatings[index] ? (
+                <div className="rating-thanks">
+                  <StarRating rating={userRatings[index]} interactive={false} />
+                  <p>¡Gracias por tu valoración!</p>
+                </div>
+              ) : (
+                <StarRating
+                  onRatingChange={(rating) => handleRatingChange(index, rating)}
+                />
+              )}
+            </div>
           </div>
         ))}
       </div>
@@ -272,6 +375,9 @@ const License = () => {
                 <span>Total:</span>
                 <span>{formatCurrency(total)} COP</span>
               </div>
+              <button className="purchase-button" onClick={handlePurchase}>
+                Comprar Ahora
+              </button>
             </div>
           </>
         ) : (
