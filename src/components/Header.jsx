@@ -7,11 +7,14 @@ import { FaMessage, FaUser, FaHouse, FaUserGroup } from "react-icons/fa6";
 import { IoMdPersonAdd } from "react-icons/io";
 import { useLocation } from "react-router-dom";
 import { useUser } from "../context/userContext";
-
+import { useTheme } from "../context/ThemeContext";
+import { FaSun, FaMoon } from "react-icons/fa"; // Iconos de sol y luna
+import { IconContext } from "react-icons";
 function Header() {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const { user } = useUser();
+  const { isDarkMode, toggleTheme } = useTheme();
 
   const isActive = (path) => location.pathname === `/${path}`;
 
@@ -67,10 +70,24 @@ function Header() {
         <div className="rightOptions">
           <FaMessage className="rightIcons" />
           <FaBell className="rightIcons" />
-          <img 
-            className="userPicture" 
-            src={user?.avatar || userPic} 
-            alt="Foto de perfil" 
+          <IconContext.Provider
+            value={{
+              size: "1.5em",
+              style: {
+                cursor: "pointer",
+                verticalAlign: "middle",
+                marginLeft: "10px",
+              },
+            }}
+          >
+            <div onClick={toggleTheme} className="theme-toggle">
+              {isDarkMode ? <FaSun /> : <FaMoon />}
+            </div>
+          </IconContext.Provider>
+          <img
+            className="userPicture"
+            src={user?.avatar || userPic}
+            alt="Foto de perfil"
           />
           {user?.name ? (
             <span className="userName">{user.name}</span>

@@ -8,19 +8,26 @@ import Footer from "../components/Footer";
 import ContactSection from "../components/Home/ContactSection";
 import ScrollToTopArrow from "../components/Home/ScrollToTopArrow";
 import License from "../components/Home/License";
+
+import { useTheme } from "../context/ThemeContext";
+
 function Home() {
+  const { isDarkMode } = useTheme();
   return (
     <>
-      <Header />
-      <CardCarousel />
-      <Nav />
-      <NewsGrid />
-      <FeatureHighlight />
-      <License />
-      <ContactSection />
-      <ScrollToTopArrow />
-
-      <Footer />
+      <div
+        className={`app-container ${isDarkMode ? "dark-mode" : "light-mode"}`}
+      >
+        <Header />
+        <CardCarousel />
+        <Nav />
+        <NewsGrid />
+        <FeatureHighlight />
+        <License />
+        <ContactSection />
+        <ScrollToTopArrow />
+        <Footer />
+      </div>
     </>
   );
 }

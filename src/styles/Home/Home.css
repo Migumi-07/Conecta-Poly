@@ -141,3 +141,172 @@ html {
 section {
   transition: all 0.5s ease;
 }
+
+/*Dark Mode*/
+:root {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --primary-color: #00c3a5;
+}
+
+.dark-mode {
+  --bg-color: #1a1a1a;
+  --text-color: #f0f0f0;
+  --primary-color: #00c3a5;
+}
+
+.app-container {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.light-mode {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.dark-mode {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+}
+
+.dark-mode a {
+  color: #f0f0f0;
+}
+
+.dark-mode .card {
+  background-color: #2d2d2d;
+  border-color: #444;
+}
+
+.dark-mode .contact-section {
+  background-color: #2d2d2d;
+  border-color: #444;
+}
+
+.dark-mode .homeNavContainer {
+  background-color: #2d2d2d;
+  border-color: #444;
+}
+
+.dark-mode .homeNavContainer a {
+  color: #00e0c2;
+}
+
+.dark-mode .news-card {
+  background-color: #121215;
+  border-color: #444;
+}
+
+.dark-mode .news-card h4 {
+  color: #f0f0f0;
+}
+
+.dark-mode .news-card .news-date {
+  color: #bdbdbd;
+}
+.dark-mode .news-card .news-excerpt {
+  color: #bdbdbd;
+}
+
+.dark-mode .feature-text {
+  color: #bdbdbd;
+}
+
+.dark-mode .license-header p {
+  color: #bdbdbd;
+}
+
+.dark-mode .license-card {
+  background-color: #1c1c1c;
+  border-color: #444;
+}
+
+.dark-mode .cart-table th {
+  background-color: #1c1c1c;
+  border-color: #444;
+  color: #f0f0f0;
+}
+
+.dark-mode .cart-table td {
+  background-color: #1c1c1c;
+  border-color: #444;
+  color: #bdbdbd;
+}
+
+.dark-mode .license-card label {
+  color: #bdbdbd;
+}
+
+.dark-mode .license-card input {
+  color: #bdbdbd;
+}
+
+.dark-mode .license-card h2 {
+  color: #f0f0f0;
+}
+
+.dark-mode .license-card li {
+  color: #bdbdbd;
+}
+
+.dark-mode h2 {
+  color: #f0f0f0;
+}
+
+.dark-mode .news-grid-section {
+  background-color: var(--bg-color);
+  color: #f0f0f0;
+}
+
+.dark-mode h3 {
+  color: #f0f0f0;
+}
+
+.dark-mode .feature-content {
+  background-color: var(--bg-color);
+  color: #f0f0f0;
+}
+
+.dark-mode .cart-section {
+  background-color: #1c1c1c;
+}
+
+.dark-mode .compare-plans-section {
+  background-color: #1c1c1c;
+}
+
+.dark-mode .compare-plans-section h2 {
+  color: #f0f0f0;
+}
+
+.dark-mode .compare-table th:hover {
+  background-color: #00c3a5 !important;
+}
+
+.dark-mode .compare-table th {
+  background-color: #1c1c1c;
+  color: #f0f0f0;
+  border: 1px solid #555;
+}
+
+.dark-mode .compare-table td {
+  background-color: #1c1c1c;
+  color: #bdbdbd;
+  border: 1px solid #555;
+}
+
+.dark-mode .contact-card {
+  background-color: #1c1c1c;
+}
+
+.dark-mode .contact-card h3 {
+  color: #f0f0f0;
+}
+
+.dark-mode .contact-card p {
+  color: #bdbdbd;
+}
+
+.dark-mode .contact-card a {
+  color: #bdbdbd;
+}

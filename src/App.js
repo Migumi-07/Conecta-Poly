@@ -6,10 +6,11 @@ import Login from './pages/Login';
 import AboutUs from './pages/AboutUs';
 import Discover from './pages/Discover';
 import { UserProvider } from './context/userContext';
-
+import { ThemeProvider } from './context/ThemeContext';
 function App() {
   return (
     <UserProvider>
+      <ThemeProvider>
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
@@ -18,6 +19,7 @@ function App() {
           <Route path="/Discover" element={<Discover />} />
         </Routes>
       </Router>
+      </ThemeProvider>
     </UserProvider>
   );
 }

@@ -235,6 +235,31 @@
   color: black;
 }
 
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.3s ease;
+  color: var(--text-color);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  color: #00c3a5;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.theme-toggle:active {
+  animation: spin 0.5s linear;
+}
+
 /* Responsive Design */
 @media (max-width: 992px) {
   .headerNav,
@@ -270,4 +295,19 @@
   .mobile-menu {
     width: 85%;
   }
+}
+
+/* dark mode */
+
+.dark-mode .mainHeader {
+  background-color: #333;
+  color: #f0f0f0;
+}
+
+.dark-mode span {
+  color: #f0f0f0;
+}
+
+.dark-mode .rightIcons {
+  color: #f0f0f0;
 }
