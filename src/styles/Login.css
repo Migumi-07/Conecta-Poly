@@ -111,3 +111,57 @@ input:focus {
   color: #009688;
 }
 
+/* Versión oscura */
+
+.dark-mode .loginContent {
+  background-color: rgba(30, 30, 30, 0.9);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .loginTextContainer h1 {
+  color: #f0f0f0;
+}
+
+.dark-mode .loginTextContainer p {
+  color: #aaa;
+}
+
+.dark-mode input {
+  border-bottom-color: #555;
+  color: #f0f0f0;
+}
+
+.dark-mode input:focus {
+  border-bottom-color: #00c3a5;
+}
+
+.dark-mode input::placeholder {
+  color: #777;
+}
+
+.dark-mode .toggleFormText {
+  color: #aaa;
+}
+
+.dark-mode .toggleFormText span {
+  color: #00c3a5;
+}
+
+.dark-mode .toggleFormText span:hover {
+  color: #00e6c3;
+}
+
+@media (max-width: 768px) {
+  .loginContent {
+    padding: 30px;
+    margin: 20px;
+  }
+
+  .loginTextContainer h1 {
+    font-size: 24px;
+  }
+
+  input {
+    padding: 12px;
+  }
+}

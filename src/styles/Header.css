@@ -311,3 +311,17 @@
 .dark-mode .rightIcons {
   color: #f0f0f0;
 }
+
+
+.dark-mode .mainHeaderL{
+  background-color: #333;
+  color: #f0f0f0;
+}
+
+.dark-mode span {
+  color: #f0f0f0;
+}
+
+.dark-mode .rightIcons {
+  color: #f0f0f0;
+}

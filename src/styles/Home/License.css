@@ -430,6 +430,245 @@
   border-top: 1px solid #eee;
 }
 
+/* Estilos para los modales de pago */
+.payment-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.payment-modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.payment-modal h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.installment-info {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #555;
+}
+
+.submit-payment {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.submit-payment:hover {
+  background-color: #45a049;
+}
+
+.card-type-indicator {
+  margin-top: 10px;
+}
+
+.card-logo {
+  height: 30px;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Estilos para el modal de éxito */
+.payment-success-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.payment-success-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.payment-success-content h2 {
+  color: #4CAF50;
+  margin-top: 0;
+}
+
+.payment-summary {
+  text-align: left;
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.payment-summary h3 {
+  margin-top: 0;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.card-logo-small {
+  height: 20px;
+  vertical-align: middle;
+}
+
+.close-success-modal {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 15px;
+}
+
+.close-success-modal:hover {
+  background-color: #45a049;
+}
+
+.dark-mode .payment-modal-content,
+.dark-mode .payment-success-content {
+  background-color: #2d3748;
+  color: #f7fafc;
+}
+
+.dark-mode .payment-modal h2,
+.dark-mode .payment-success-content h2 {
+  color: #f7fafc;
+}
+
+.dark-mode .form-group label {
+  color: #e2e8f0;
+}
+
+.dark-mode .form-group input,
+.dark-mode .form-group select {
+  background-color: #4a5568;
+  color: #f7fafc;
+  border-color: #4a5568;
+}
+
+.dark-mode .form-group input::placeholder {
+  color: #a0aec0;
+}
+
+.dark-mode .installment-info {
+  color: #cbd5e0;
+}
+
+.dark-mode .payment-summary {
+  background-color: #4a5568;
+  color: #f7fafc;
+}
+
+.dark-mode .payment-summary h3 {
+  border-bottom-color: #718096;
+}
+
+.dark-mode .close-modal {
+  color: #f7fafc;
+}
+
+.dark-mode .close-modal:hover {
+  color: #cbd5e0;
+}
+
+.dark-mode .submit-payment {
+  background-color: #38a169;
+}
+
+.dark-mode .submit-payment:hover {
+  background-color: #2f855a;
+}
+
+.dark-mode .close-success-modal {
+  background-color: #38a169;
+}
+
+.dark-mode .close-success-modal:hover {
+  background-color: #2f855a;
+}
+
+.dark-mode .error-message {
+  color: #fc8181;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

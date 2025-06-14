@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import GroupsCardsGrid from "../components/Groups/GroupsCardsGrid";
 import "../styles/Discover/PeopleCards.css";
 import { useTheme } from "../context/ThemeContext";
+import Footer from "../components/Footer";
 function Discover() {
   const { isDarkMode } = useTheme();
   return (
@@ -13,6 +14,7 @@ function Discover() {
         <div className="main-background">
           <GroupsCardsGrid />
         </div>
+        <Footer />
       </div>
     </>
   );

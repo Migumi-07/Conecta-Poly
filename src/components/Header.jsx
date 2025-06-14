@@ -8,7 +8,7 @@ import { IoMdPersonAdd } from "react-icons/io";
 import { useLocation } from "react-router-dom";
 import { useUser } from "../context/userContext";
 import { useTheme } from "../context/ThemeContext";
-import { FaSun, FaMoon } from "react-icons/fa"; // Iconos de sol y luna
+import { FaSun, FaMoon } from "react-icons/fa";
 import { IconContext } from "react-icons";
 function Header() {
   const location = useLocation();

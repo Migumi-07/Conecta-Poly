@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/Home/License.css";
 
+// Componente de estrellas de rating (sin cambios)
 const StarRating = ({ rating = 0, onRatingChange, interactive = true }) => {
   const [hoverRating, setHoverRating] = useState(0);
   const [selectedRating, setSelectedRating] = useState(rating);
@@ -44,16 +45,23 @@ const StarRating = ({ rating = 0, onRatingChange, interactive = true }) => {
   );
 };
 
+// Componente principal con las nuevas funcionalidades de pago
 const License = () => {
-  const handlePurchase = () => {
-    if (
-      window.confirm(`¿Confirmas la compra por ${formatCurrency(total)} COP?`)
-    ) {
-      console.log("Compra confirmada:", cart);
-      alert("¡Gracias por tu compra!");
-      setCart([]);
-    }
-  };
+  const [paymentModalOpen, setPaymentModalOpen] = useState(false);
+  const [paymentSuccessModalOpen, setPaymentSuccessModalOpen] = useState(false);
+  const [paymentData, setPaymentData] = useState({
+    installments: 1,
+    cardNumber: "",
+    cardName: "",
+    securityCode: "",
+    expiryMonth: "",
+    expiryYear: "",
+    address: "",
+    city: "",
+  });
+  const [cardType, setCardType] = useState(null);
+  const [cardError, setCardError] = useState("");
+
   const licenseTypes = [
     {
       name: "Básica",
@@ -164,11 +172,6 @@ const License = () => {
   };
 
   const handleRatingChange = (licenseIndex, newRating) => {
-    console.log(
-      `Nueva valoración para ${licenseTypes[licenseIndex].name}:`,
-      newRating
-    );
-
     const newUserRatings = [...userRatings];
     newUserRatings[licenseIndex] = newRating;
     setUserRatings(newUserRatings);
@@ -192,6 +195,118 @@ const License = () => {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(value);
+  };
+
+  // Nueva función para manejar el pago
+  const handlePurchase = () => {
+    setPaymentModalOpen(true);
+  };
+
+  // Función para manejar cambios en el formulario de pago
+  const handlePaymentChange = (e) => {
+    const { name, value } = e.target;
+    
+    if (name === "cardNumber") {
+      // Formatear el número de tarjeta con guiones cada 4 dígitos
+      const formattedValue = value
+        .replace(/\D/g, '')
+        .replace(/(\d{4})(?=\d)/g, '$1-')
+        .substring(0, 19);
+      
+      // Determinar el tipo de tarjeta basado en el primer dígito
+      const firstDigit = formattedValue.charAt(0);
+      let newCardType = null;
+      
+      if (firstDigit === '4') {
+        newCardType = 'visa';
+      } else if (firstDigit === '5') {
+        newCardType = 'mastercard';
+      } else if (firstDigit === '3') {
+        newCardType = 'amex';
+      } else if (firstDigit === '7') {
+        newCardType = 'diners';
+      }
+      
+      setCardType(newCardType);
+      setPaymentData(prev => ({ ...prev, [name]: formattedValue }));
+      
+      // Validar que tenga 16 dígitos (19 caracteres incluyendo guiones)
+      if (formattedValue.replace(/\D/g, '').length === 16) {
+        setCardError("");
+      } else {
+        setCardError("El número de tarjeta debe tener 16 dígitos");
+      }
+    } else if (name === "installments") {
+      // Validar que no sea mayor a 10
+      const numValue = parseInt(value) || 1;
+      const validatedValue = numValue > 10 ? 10 : numValue < 1 ? 1 : numValue;
+      setPaymentData(prev => ({ ...prev, [name]: validatedValue }));
+    } else {
+      setPaymentData(prev => ({ ...prev, [name]: value }));
+    }
+  };
+
+  // Función para enviar el formulario de pago
+  const handlePaymentSubmit = (e) => {
+    e.preventDefault();
+    
+    // Validaciones adicionales
+    if (paymentData.cardNumber.replace(/\D/g, '').length !== 16) {
+      setCardError("El número de tarjeta debe tener 16 dígitos");
+      return;
+    }
+    
+    if (paymentData.securityCode.length !== 4) {
+      alert("El código de seguridad debe tener 4 dígitos");
+      return;
+    }
+    
+    if (!paymentData.expiryMonth || !paymentData.expiryYear) {
+      alert("Por favor selecciona mes y año de expiración");
+      return;
+    }
+    
+    // Si todo está bien, mostrar el resumen
+    setPaymentModalOpen(false);
+    setPaymentSuccessModalOpen(true);
+  };
+
+  // Función para cerrar el modal de éxito
+  const closeSuccessModal = () => {
+    setPaymentSuccessModalOpen(false);
+    setCart([]);
+    setPaymentData({
+      installments: 1,
+      cardNumber: "",
+      cardName: "",
+      securityCode: "",
+      expiryMonth: "",
+      expiryYear: "",
+      address: "",
+      city: "",
+    });
+  };
+
+  // Obtener la fecha y hora actual formateada
+  const getCurrentDateTime = () => {
+    const now = new Date();
+    const date = now.toLocaleDateString('es-CO');
+    const time = now.toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit' });
+    return { date, time };
+  };
+
+  // Obtener la imagen de la franquicia de la tarjeta
+  const getCardImage = () => {
+    if (!cardType) return null;
+    
+    const cardImages = {
+      visa: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png",
+      mastercard: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png",
+      amex: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/American_Express_logo.svg/1024px-American_Express_logo.svg.png",
+      diners: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Diners_Club_International_logo.svg/1200px-Diners_Club_International_logo.svg.png"
+    };
+    
+    return cardImages[cardType];
   };
 
   useEffect(() => {
@@ -384,6 +499,208 @@ const License = () => {
           <p className="empty-cart">No hay licencias en el carrito</p>
         )}
       </div>
+
+      {/* Modal de pago */}
+      {paymentModalOpen && (
+        <div className="payment-modal">
+          <div className="payment-modal-content">
+            <button 
+              className="close-modal" 
+              onClick={() => setPaymentModalOpen(false)}
+            >
+              &times;
+            </button>
+            <h2>Información de Pago</h2>
+            <form onSubmit={handlePaymentSubmit}>
+              <div className="form-group">
+                <label>Número de cuotas (máximo 10)</label>
+                <input
+                  type="number"
+                  name="installments"
+                  min="1"
+                  max="10"
+                  value={paymentData.installments}
+                  onChange={handlePaymentChange}
+                  required
+                />
+                <div className="installment-info">
+                  <span>Valor por cuota: </span>
+                  <strong>
+                    {formatCurrency(total / paymentData.installments)} COP
+                  </strong>
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label>Nombre en la tarjeta</label>
+                <input
+                  type="text"
+                  name="cardName"
+                  value={paymentData.cardName}
+                  onChange={handlePaymentChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Número de tarjeta de crédito</label>
+                <input
+                  type="text"
+                  name="cardNumber"
+                  value={paymentData.cardNumber}
+                  onChange={handlePaymentChange}
+                  placeholder="0000-0000-0000-0000"
+                  required
+                />
+                {cardError && <p className="error-message">{cardError}</p>}
+                {cardType && (
+                  <div className="card-type-indicator">
+                    <img 
+                      src={getCardImage()} 
+                      alt={cardType} 
+                      className="card-logo"
+                    />
+                  </div>
+                )}
+              </div>
+
+              <div className="form-group">
+                <label>Código de seguridad (4 dígitos)</label>
+                <input
+                  type="text"
+                  name="securityCode"
+                  value={paymentData.securityCode}
+                  onChange={handlePaymentChange}
+                  maxLength="4"
+                  pattern="\d{4}"
+                  required
+                />
+              </div>
+
+              <div className="form-row">
+                <div className="form-group">
+                  <label>Mes de expiración</label>
+                  <select
+                    name="expiryMonth"
+                    value={paymentData.expiryMonth}
+                    onChange={handlePaymentChange}
+                    required
+                  >
+                    <option value="">Mes</option>
+                    {Array.from({ length: 12 }, (_, i) => (
+                      <option key={i + 1} value={i + 1}>
+                        {i + 1}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="form-group">
+                  <label>Año de expiración</label>
+                  <select
+                    name="expiryYear"
+                    value={paymentData.expiryYear}
+                    onChange={handlePaymentChange}
+                    required
+                  >
+                    <option value="">Año</option>
+                    {Array.from({ length: 16 }, (_, i) => (
+                      <option key={i + 2025} value={i + 2025}>
+                        {i + 2025}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label>Dirección</label>
+                <input
+                  type="text"
+                  name="address"
+                  value={paymentData.address}
+                  onChange={handlePaymentChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Ciudad</label>
+                <input
+                  type="text"
+                  name="city"
+                  value={paymentData.city}
+                  onChange={handlePaymentChange}
+                  required
+                />
+              </div>
+
+              <button type="submit" className="submit-payment">
+                Confirmar Pago
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Modal de éxito en el pago */}
+      {paymentSuccessModalOpen && (
+        <div className="payment-success-modal">
+          <div className="payment-success-content">
+            <h2>¡Pago exitoso!</h2>
+            <p>Tu compra ha sido procesada correctamente.</p>
+            
+            <div className="payment-summary">
+              <h3>Resumen de la compra</h3>
+              <div className="summary-row">
+                <span>Fecha:</span>
+                <span>{getCurrentDateTime().date}</span>
+              </div>
+              <div className="summary-row">
+                <span>Hora:</span>
+                <span>{getCurrentDateTime().time}</span>
+              </div>
+              <div className="summary-row">
+                <span>Total de la compra:</span>
+                <span>{formatCurrency(total)} COP</span>
+              </div>
+              <div className="summary-row">
+                <span>Cuotas:</span>
+                <span>{paymentData.installments}</span>
+              </div>
+              <div className="summary-row">
+                <span>Valor por cuota:</span>
+                <span>{formatCurrency(total / paymentData.installments)} COP</span>
+              </div>
+              <div className="summary-row">
+                <span>Tarjeta terminada en:</span>
+                <span>
+                  ****-****-****-
+                  {paymentData.cardNumber.slice(-4).replace(/-/g, '')}
+                </span>
+              </div>
+              {cardType && (
+                <div className="summary-row">
+                  <span>Franquicia:</span>
+                  <img 
+                    src={getCardImage()} 
+                    alt={cardType} 
+                    className="card-logo-small"
+                  />
+                </div>
+              )}
+            </div>
+            
+            <button 
+              className="close-success-modal"
+              onClick={closeSuccessModal}
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className="compare-plans-section">
         <h2>Comparar planes</h2>
         <table className="compare-table">

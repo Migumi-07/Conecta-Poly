@@ -7,9 +7,11 @@ import avatar1 from "../images/avatar/avatar1.jpg";
 import avatar2 from "../images/avatar/avatar2.jpg";
 import avatar3 from "../images/avatar/avatar3.jpg";
 import avatar4 from "../images/avatar/avatar4.jpg";
+import { useTheme } from "../context/ThemeContext";
 
 function Login() {
-  const { setUser } = useUser(); // Cambiamos para no confundir con el estado local
+   const { isDarkMode } = useTheme();
+  const { setUser } = useUser(); 
   const [isLoginForm, setIsLoginForm] = useState(true);
 
   // Campos de registro
@@ -164,6 +166,9 @@ function Login() {
 
   return (
     <>
+         <div
+        className={`app-container ${isDarkMode ? "dark-mode" : "light-mode"}`}
+      >
       <Header />
       <div className="loginContainer">
         <div className="loginContent">
@@ -400,6 +405,7 @@ function Login() {
             )}
           </div>
         </div>
+      </div>
       </div>
     </>
   );
