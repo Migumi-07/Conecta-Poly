@@ -84,11 +84,14 @@ function Header() {
               {isDarkMode ? <FaSun /> : <FaMoon />}
             </div>
           </IconContext.Provider>
-          <img
-            className="userPicture"
-            src={user?.avatar || userPic}
-            alt="Foto de perfil"
-          />
+          <a href="perfil">
+            <img
+              className="userPicture"
+              src={user?.avatar || userPic}
+              alt="Foto de perfil"
+            />
+          </a>
+
           {user?.name ? (
             <span className="userName">{user.name}</span>
           ) : user?.username ? (
@@ -124,7 +127,7 @@ function Header() {
           </i>{" "}
           Inicio
         </a>
-        <a href="." className="mobile-menu-item">
+        <a href="Perfil" className="mobile-menu-item">
           <i>
             <FaUser />
           </i>{" "}

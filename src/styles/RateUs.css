@@ -1,0 +1,145 @@
+.calificacion {
+  background-color: #fff;
+  padding: 30px;
+  max-width: 500px;
+  margin: 40px auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  color: #000;
+}
+
+/* Título */
+.calificacion h2 {
+  text-align: center;
+  font-size: 24px;
+}
+
+/* Línea debajo del título */
+.underline {
+  width: 60px;
+  height: 3px;
+  background-color: #00b894;
+  margin: 10px auto 20px auto;
+  border-radius: 2px;
+}
+
+/* Contenedor para centrar estrellas + promedio */
+.contenedor-centrado {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.stars-con-promedio {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Estrellas */
+.stars {
+  display: flex;
+  justify-content: center;
+  font-size: 2.5rem;
+}
+
+.stars span {
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.stars .checked {
+  color: gold;
+}
+
+/* Número del promedio */
+.numero-promedio {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Formulario */
+.calificacion form label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.calificacion input,
+.calificacion textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  background-color: #fff;
+  color: #000;
+}
+
+.calificacion textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.calificacion button {
+  margin-top: 20px;
+  padding: 12px;
+  width: 100%;
+  background-color: #00b894;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.calificacion button:hover {
+  background-color: #019875;
+}
+
+/* 🌙 Modo oscuro */
+.dark-mode .calificacion {
+  background-color: #1e1e1e;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  color: #f0f0f0;
+}
+
+.dark-mode .calificacion h2 {
+  color: #f0f0f0;
+}
+
+.dark-mode .underline {
+  background-color: #00e6b8;
+}
+
+.dark-mode .stars span {
+  color: #555;
+}
+
+.dark-mode .stars .checked {
+  color: gold;
+}
+
+.dark-mode .numero-promedio {
+  color: #fff;
+}
+
+.dark-mode .calificacion input,
+.dark-mode .calificacion textarea {
+  background-color: #2b2b2b;
+  color: #f0f0f0;
+  border: 1px solid #555;
+}
+
+.dark-mode .calificacion button {
+  background-color: #00b894;
+}
+
+.dark-mode .calificacion button:hover {
+  background-color: #00d9a6;
+}

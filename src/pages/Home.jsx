@@ -8,7 +8,7 @@ import Footer from "../components/Footer";
 import ContactSection from "../components/Home/ContactSection";
 import ScrollToTopArrow from "../components/Home/ScrollToTopArrow";
 import License from "../components/Home/License";
-
+import RateUs from "../pages/RateUs"
 import { useTheme } from "../context/ThemeContext";
 
 function Home() {
@@ -25,6 +25,7 @@ function Home() {
         <FeatureHighlight />
         <License />
         <ContactSection />
+        <RateUs />
         <ScrollToTopArrow />
         <Footer />
       </div>
