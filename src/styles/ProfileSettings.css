@@ -35,19 +35,6 @@
   border: 2px solid #ccc;
 }
 
-input,
-textarea,
-select {
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  width: 100%;
-  box-sizing: border-box;
-  background-color: #fff;
-  color: #000;
-}
-
 textarea {
   resize: vertical;
   min-height: 80px;
@@ -92,14 +79,6 @@ button.danger:hover {
 
 .dark-mode .profile-container h2 {
   color: #f0f0f0;
-}
-
-.dark-mode input,
-.dark-mode textarea,
-.dark-mode select {
-  background-color: #2b2b2b;
-  color: #f0f0f0;
-  border: 1px solid #555;
 }
 
 .dark-mode .avatar {
